@@ -22,7 +22,7 @@
       font-family: 'Arial', sans-serif;
       background-color: #f8f9fa;
       color: #343a40;
-      padding: 10px;
+      padding: 20px;
       line-height: 1.6;
     }
 
@@ -266,33 +266,7 @@
             document.getElementById('newTokens').style.display = 'none';
             document.getElementById('traders').style.display = 'block';
         });
-
-        // Function to handle saving Solana Mint URLs
-        document.getElementById('saveUrlsButton').addEventListener('click', function() {
-            var mintUrls = [];
-            var tableRows = document.querySelectorAll('#newTokensTable tbody tr');
-            tableRows.forEach(function(row) {
-                var symbol = row.cells[1].textContent;
-                mintUrls.push(symbol);
-            });
-
-            var textContent = mintUrls.join('\n');
-            var blob = new Blob([textContent], { type: 'text/plain' });
-            var a = document.createElement('a');
-            a.download = 'solana_mint_urls.txt';
-            a.href = URL.createObjectURL(blob);
-            a.textContent = 'Download';
-            a.click();
-        });
-
-        document.getElementById('copyAddressBtn').addEventListener('click', function() {
-            var walletAddress = document.getElementById('walletAddress').innerText;
-            navigator.clipboard.writeText(walletAddress).then(function() {
-                alert('Wallet address copied to clipboard!');
-            }, function(err) {
-                console.error('Could not copy wallet address: ', err);
-            });
-        });
+    
     </script>
 </body>
 </html>
